@@ -2,23 +2,27 @@ import Cocoa
 
 class About {
   private let familyCredits = NSAttributedString(
-    string: "Special thank you to Tonia, Anna & Guy! ❤️",
+    string: NSLocalizedString("about_family_credits", comment: ""),
     attributes: [NSAttributedString.Key.foregroundColor: NSColor.labelColor]
   )
 
   private var kossCredits: NSMutableAttributedString {
-    let string = NSMutableAttributedString(string: "Kudos to Sasha Koss for help! 🏂",
+    let text = NSLocalizedString("about_koss_credits", comment: "")
+    let string = NSMutableAttributedString(string: text,
                                            attributes: [NSAttributedString.Key.foregroundColor: NSColor.labelColor])
-    string.addAttribute(.link, value: "https://koss.nocorp.me", range: NSRange(location: 9, length: 10))
+    addLink("https://koss.nocorp.me", to: "Sasha Koss", in: string)
     return string
   }
 
   private var links: NSMutableAttributedString {
-    let string = NSMutableAttributedString(string: "Website│GitHub│Support",
+    let website = NSLocalizedString("about_website", comment: "")
+    let github = "GitHub"
+    let support = NSLocalizedString("about_support", comment: "")
+    let string = NSMutableAttributedString(string: [website, github, support].joined(separator: "│"),
                                            attributes: [NSAttributedString.Key.foregroundColor: NSColor.labelColor])
-    string.addAttribute(.link, value: "https://maccy.app", range: NSRange(location: 0, length: 7))
-    string.addAttribute(.link, value: "https://github.com/p0deje/Maccy", range: NSRange(location: 8, length: 6))
-    string.addAttribute(.link, value: "mailto:support@maccy.app", range: NSRange(location: 15, length: 7))
+    addLink("https://maccy.app", to: website, in: string)
+    addLink("https://github.com/p0deje/Maccy", to: github, in: string)
+    addLink("mailto:support@maccy.app", to: support, in: string)
     return string
   }
 
@@ -38,5 +42,15 @@ class About {
   func openAbout(_ sender: NSMenuItem?) {
     NSApp.activate(ignoringOtherApps: true)
     NSApp.orderFrontStandardAboutPanel(options: [NSApplication.AboutPanelOptionKey.credits: credits])
+  }
+
+  // Ссылка ставится на подстроку, а не на жёсткий диапазон: переводы меняют длину текста.
+  private func addLink(_ url: String, to substring: String, in string: NSMutableAttributedString) {
+    let range = (string.string as NSString).range(of: substring)
+    guard range.location != NSNotFound else {
+      return
+    }
+
+    string.addAttribute(.link, value: url, range: range)
   }
 }

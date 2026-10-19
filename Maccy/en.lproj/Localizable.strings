@@ -23,3 +23,29 @@
 "history_item_image_accessibility_label_no_app" = "Image, %dx%d";
 "history_item_image_accessibility_generic" = "Image";
 "toolbar_remove_paste_stack_action" = "Stop paste stack";
+"about_website" = "Website";
+"about_support" = "Support";
+"about_koss_credits" = "Kudos to Sasha Koss for help! 🏂";
+"about_family_credits" = "Special thank you to Tonia, Anna & Guy! ❤️";
+/* Быстрые команды (Intents). Форк всегда русский, а «Быстрые команды» берут язык системы,
+   а не язык приложения, поэтому здесь те же русские значения, что в ru.lproj. */
+"Clipboard item not found" = "Элемент буфера обмена не найден";
+"Clear Clipboard History" = "Очистить историю буфера обмена";
+"Clears all Maccy clipboard history except for pinned items." = "Очищает всю историю буфера обмена Maccy, кроме прикреплённых элементов.";
+"Delete Item from Clipboard History" = "Удалить элемент из истории буфера обмена";
+"Deletes an item from Maccy clipboard history." = "Удаляет элемент из истории буфера обмена Maccy.";
+"Delete ${number} Item from Clipboard History" = "Удалить элемент № ${number} из истории буфера обмена";
+"Number" = "Номер";
+"Get Item from Clipboard History" = "Получить элемент из истории буфера обмена";
+"Gets an item from Maccy clipboard history.\nThe returned item can be used to access its plain/rich/HTML text, image contents or file location." = "Получает элемент из истории буфера обмена Maccy.\nПолученный элемент даёт доступ к его обычному, форматированному или HTML-тексту, изображению или расположению файла.";
+"Selected" = "Выбранный";
+"Select Item in Clipboard History" = "Выбрать элемент в истории буфера обмена";
+"Selects an item in Maccy clipboard history.\nDepending on Maccy settings, it might trigger pasting of the selected item." = "Выбирает элемент в истории буфера обмена Maccy.\nВ зависимости от настроек Maccy выбранный элемент может быть сразу вставлен.";
+"Select ${number} Item in Clipboard History" = "Выбрать элемент № ${number} в истории буфера обмена";
+"What is the number of the item?" = "Какой номер у элемента?";
+"Clipboard item" = "Элемент буфера обмена";
+"File" = "Файл";
+"HTML" = "HTML";
+"Image" = "Изображение";
+"Rich Text" = "Форматированный текст";
+"Text" = "Текст";
