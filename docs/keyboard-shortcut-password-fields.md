@@ -1,40 +1,40 @@
-# Keyboard Shortcut Not Working in Password Fields
+# Горячая клавиша не работает в полях ввода пароля
 
-## Problem Description
+## Описание проблемы
 
-Some users may experience issues where their Maccy keyboard shortcut stops working, particularly in password fields or secure input contexts. This commonly occurs when using shortcuts that produce visible characters, such as `Option+C` which generates the "ç" character.
+У некоторых пользователей горячая клавиша Maccy перестаёт срабатывать, особенно в полях ввода пароля и других защищённых полях. Обычно так бывает с сочетаниями, которые вводят видимый символ, например `Option+C`, дающее «ç».
 
-## Root Cause
+## Причина
 
-macOS blocks keyboard event listeners that output text in secure fields. When a keyboard combination generates a character (like `Option+C` → "ç"), macOS security features prevent third-party applications from intercepting these key events in password fields and other secure input contexts.
+macOS блокирует перехват клавиатурных событий, которые вводят текст, в защищённых полях. Когда сочетание порождает символ (как `Option+C` → «ç»), защита macOS не позволяет сторонним приложениям перехватывать такие нажатия в полях пароля и других защищённых контекстах.
 
-## Easy Solution
+## Простое решение
 
-Choose Different Shortcut: Select a keyboard combination that doesn't produce visible characters (e.g., Cmd+Shift+V)
+Выберите другое сочетание: возьмите комбинацию, которая не вводит видимых символов (например, Cmd+Shift+V).
 
-## Detailed Solution: If you really want to continue using your current kb shortcut
+## Подробное решение: если хочется оставить текущее сочетание
 
-If you want to use a keyboard shortcut that is used by the system (and produces text output), you can use Karabiner-Elements to remap this shortcut to another keyboard shortcut. For example, remapping `Option+C` to `Cmd+Shift+C`.
+Если вы хотите использовать сочетание, которое занято системой (и вводит текст), переназначьте его на другое с помощью Karabiner-Elements. Например, `Option+C` на `Cmd+Shift+C`.
 
-### Using Karabiner-Elements
+### Как использовать Karabiner-Elements
 
-1. **Download and Install Karabiner-Elements**
+1. **Скачайте и установите Karabiner-Elements**
 
-   - Visit: <https://karabiner-elements.pqrs.org/>
-   - Download and install the application
-   - Grant necessary permissions when prompted
+   - Откройте сайт: <https://karabiner-elements.pqrs.org/>
+   - Скачайте и установите приложение
+   - Выдайте нужные разрешения, когда система их запросит
 
-2. **Configure Key Remapping**
+2. **Настройте переназначение клавиш**
 
-   - Open Karabiner-Elements
-   - Navigate to "Complex Modifications"
-   - Click 'Add your own rule'
-   - Paste the following JSON configuration (see example below)
-   - Instructions for editing different key combinations: modify the `key_code` and `modifiers` values as needed
-   - Give your rule a name (Example: "Remap Option+C to Cmd+Shift+C for clipboard manager")
+   - Откройте Karabiner-Elements
+   - Перейдите в «Complex Modifications»
+   - Нажмите «Add your own rule»
+   - Вставьте JSON-конфигурацию (пример ниже)
+   - Чтобы использовать другие сочетания, измените значения `key_code` и `modifiers`
+   - Дайте правилу имя (например, «Remap Option+C to Cmd+Shift+C for clipboard manager»)
 
-3. **Example Karabiner Rule**
-   This example remaps `Option+C` to `Cmd+Shift+C`:
+3. **Пример правила Karabiner**
+   В этом примере `Option+C` переназначается на `Cmd+Shift+C`:
 
    ```json
    {
@@ -60,23 +60,23 @@ If you want to use a keyboard shortcut that is used by the system (and produces 
    }
    ```
 
-4. **Update Maccy Settings**
-   - Open Maccy preferences
-   - Set the keyboard shortcut to match your Karabiner remapping (in this example: `Cmd+Shift+C`)
-   - Test the shortcut in various contexts, including password fields
+4. **Обновите настройки Maccy**
+   - Откройте настройки Maccy
+   - Задайте горячую клавишу, которая соответствует переназначению в Karabiner (в примере — `Cmd+Shift+C`)
+   - Проверьте сочетание в разных контекстах, включая поля пароля
 
-## Alternative Solutions
+## Другие способы
 
-- **Choose Different Shortcut**: Select a keyboard combination that doesn't produce visible characters (e.g., `Cmd+Shift+V`)
-- **System Keyboard Settings**: Modify system keyboard shortcuts that might conflict with your desired combination
+- **Другое сочетание**: выберите комбинацию, которая не вводит видимых символов (например, `Cmd+Shift+V`)
+- **Системные сочетания клавиш**: измените системные сочетания, которые могут конфликтовать с нужной вам комбинацией
 
-## Verification
+## Проверка
 
-After implementing the solution:
+После того как применили решение:
 
-1. Test the shortcut in regular text fields
-2. Test the shortcut in password fields
-3. Test the shortcut in secure applications (banking apps, password managers)
-4. Verify Maccy responds consistently across all contexts
+1. Проверьте сочетание в обычных текстовых полях
+2. Проверьте сочетание в полях пароля
+3. Проверьте сочетание в защищённых приложениях (банковские клиенты, менеджеры паролей)
+4. Убедитесь, что Maccy везде реагирует одинаково
 
-This approach allows you to continue using your preferred key combination while ensuring compatibility with macOS security features.
+Так вы сможете пользоваться привычной комбинацией клавиш и не конфликтовать с защитой macOS.

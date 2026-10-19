@@ -1,57 +1,57 @@
 ---
-name: 🐛 Bug Report
-description: Submit a Bug Report
+name: 🐛 Сообщение об ошибке
+description: Сообщить об ошибке
 labels: [bug]
 body:
   - type: markdown
     attributes:
       value: |
-        Thank you for taking the time to complete this bug report!
-        This will help to find the cause of the issue faster and requires fewer follow-ups.
+        Спасибо, что нашли время заполнить сообщение об ошибке!
+        Так причину проблемы найти быстрее, а уточняющих вопросов будет меньше.
   - type: checkboxes
     attributes:
-      label: Before Submitting Your Bug Report
+      label: Перед отправкой сообщения об ошибке
       options:
-        - label: I have verified that there isn't already an issue reporting the same bug to prevent duplication.
+        - label: Я проверил(а), что такого сообщения ещё нет, чтобы не создавать дубликат.
           required: false
-        - label: I have seen the [FAQ](https://github.com/p0deje/Maccy?tab=readme-ov-file#faq).
+        - label: Я прочитал(а) [FAQ](https://github.com/p0deje/Maccy?tab=readme-ov-file#faq).
           required: false
   - type: input
     attributes:
-      label: Maccy Version (see 'About' window)
-      placeholder: e.g. 0.29.0
+      label: Версия Maccy (смотрите в окне «О приложении»)
+      placeholder: например, 0.29.0
     validations:
       required: false
   - type: input
     attributes:
-      label: macOS Version
-      placeholder: e.g. 13.5.2
+      label: Версия macOS
+      placeholder: например, 13.5.2
     validations:
       required: false
   - type: textarea
     attributes:
-      label: Maccy Settings
-      description: Provide the output from running 'defaults read org.p0deje.Maccy' in Terminal.app.
+      label: Настройки Maccy
+      description: Приложите вывод команды 'defaults read org.p0deje.Maccy', выполненной в Terminal.app.
       render: Shell
     validations:
       required: false
   - type: textarea
     attributes:
-      label: Description
-      description: Please provide a clear and concise description of the bug.
-      placeholder: Short description
+      label: Описание
+      description: Опишите ошибку чётко и коротко.
+      placeholder: Краткое описание
     validations:
       required: false
   - type: textarea
     attributes:
-      label: Steps to Reproduce
+      label: Шаги для воспроизведения
       description: |
-        Provide the steps to consistently reproduce the issue. If possible, record a screen video
-        demonstrating the problem using QuickTime.app.
+        Опишите шаги, при которых проблема воспроизводится каждый раз. По возможности запишите
+        видео экрана через QuickTime.app, на котором видна проблема.
       placeholder: |
-        1. Navigate to …
-        2. Click on …
-        3. Scroll down to …
-        4. Observe …
+        1. Перейдите в …
+        2. Нажмите на …
+        3. Прокрутите вниз до …
+        4. Посмотрите на …
     validations:
       required: false

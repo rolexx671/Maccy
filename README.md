@@ -1,5 +1,8 @@
+> [!NOTE]
+> **Это русский форк Maccy.** Интерфейс и документация переведены на русский, приложение всегда запускается на русском языке. Автообновление отключено. Оригинальный проект: [p0deje/Maccy](https://github.com/p0deje/Maccy). Как поставить форк из DMG — в [INSTALL.ru.md](INSTALL.ru.md).
+
 > [!WARNING]
-> **Beware of fake websites impersonating Maccy.** Malicious sites (such as `maccyapp.net` and `maccyapp.com`) distribute malware disguised as Maccy. [**maccy.app**](https://maccy.app) is the **only** official website.
+> **Остерегайтесь поддельных сайтов, выдающих себя за Maccy.** Вредоносные сайты (например, `maccyapp.net` и `maccyapp.com`) распространяют вредоносное ПО под видом Maccy. [**maccy.app**](https://maccy.app) — **единственный** официальный сайт.
 
 <img width="128px" src="https://maccy.app/img/maccy/Logo.png" alt="Logo" />
 
@@ -8,88 +11,93 @@
 [![Downloads](https://img.shields.io/github/downloads/p0deje/Maccy/total.svg)](https://github.com/p0deje/Maccy/releases/latest)
 [![Build Status](https://img.shields.io/bitrise/716921b669780314/master?token=3pMiCb5dpFzlO-7jTYtO3Q)](https://app.bitrise.io/app/716921b669780314)
 
-Maccy is a lightweight clipboard manager for macOS. It keeps the history of what you copy
-and lets you quickly navigate, search, and use previous clipboard contents.
+Maccy — лёгкий менеджер буфера обмена для macOS. Он хранит историю всего, что вы копируете,
+и позволяет быстро перемещаться по ней, искать и снова использовать прежнее содержимое буфера.
 
-Maccy works on macOS Sonoma 14 or higher.
+Maccy работает на macOS Sonoma 14 и новее.
 
 <!-- vim-markdown-toc GFM -->
 
-* [Features](#features)
-* [Install](#install)
-* [Usage](#usage)
-* [Advanced](#advanced)
-  * [Ignore Copied Items](#ignore-copied-items)
-  * [Ignore Custom Copy Types](#ignore-custom-copy-types)
-  * [Speed up Clipboard Check Interval](#speed-up-clipboard-check-interval)
+* [Возможности](#возможности)
+* [Установка](#установка)
+* [Использование](#использование)
+* [Дополнительно](#дополнительно)
+  * [Игнорирование скопированного](#игнорирование-скопированного)
+  * [Игнорирование своих типов копирования](#игнорирование-своих-типов-копирования)
+  * [Ускорение проверки буфера обмена](#ускорение-проверки-буфера-обмена)
 * [FAQ](#faq)
-  * [Why doesn't it paste when I select an item in history?](#why-doesnt-it-paste-when-i-select-an-item-in-history)
-  * [When assigning a hotkey to open Maccy, it says that this hotkey is already used in some system setting.](#when-assigning-a-hotkey-to-open-maccy-it-says-that-this-hotkey-is-already-used-in-some-system-setting)
-  * [How to restore hidden footer?](#how-to-restore-hidden-footer)
-  * [How to ignore copies from Universal Clipboard?](#how-to-ignore-copies-from-universal-clipboard)
-  * [My keyboard shortcut stopped working in password fields. How do I fix this?](#my-keyboard-shortcut-stopped-working-in-password-fields-how-do-i-fix-this)
-* [Translations](#translations)
-* [Motivation](#motivation)
-* [License](#license)
+  * [Почему при выборе записи из истории ничего не вставляется?](#почему-при-выборе-записи-из-истории-ничего-не-вставляется)
+  * [При назначении горячей клавиши для открытия Maccy пишет, что она уже занята в системных настройках.](#при-назначении-горячей-клавиши-для-открытия-maccy-пишет-что-она-уже-занята-в-системных-настройках)
+  * [Как вернуть скрытый нижний колонтитул?](#как-вернуть-скрытый-нижний-колонтитул)
+  * [Как игнорировать копирования из универсального буфера обмена?](#как-игнорировать-копирования-из-универсального-буфера-обмена)
+  * [Моя горячая клавиша перестала работать в полях ввода пароля. Как это исправить?](#моя-горячая-клавиша-перестала-работать-в-полях-ввода-пароля-как-это-исправить)
+* [Переводы](#переводы)
+* [Мотивация](#мотивация)
+* [Лицензия](#лицензия)
 
 <!-- vim-markdown-toc -->
 
-## Features
+## Возможности
 
-* Lightweight and fast
-* Keyboard-first
-* Secure and private
-* Native UI
-* Open source and free
+* Лёгкий и быстрый
+* Управление с клавиатуры
+* Безопасный и приватный
+* Нативный интерфейс
+* Открытый исходный код, бесплатный
 
-## Install
+## Установка
 
-Download the latest version from the [releases](https://github.com/p0deje/Maccy/releases/latest) page, or use [Homebrew](https://brew.sh/):
+В этом форке приложение ставится из собранного DMG (`Maccy-ru-<версия>.dmg`). Пошаговая инструкция —
+установка, обход предупреждения Gatekeeper, разрешения и настройка — в [INSTALL.ru.md](INSTALL.ru.md).
+
+Оригинальную английскую версию можно скачать на странице [релизов](https://github.com/p0deje/Maccy/releases/latest)
+или поставить через [Homebrew](https://brew.sh/), но она использует тот же идентификатор приложения,
+поэтому рядом с этим форком её держать нельзя:
 
 ```sh
 brew install maccy
 ```
 
-## Usage
+## Использование
 
-1. <kbd>SHIFT (⇧)</kbd> + <kbd>COMMAND (⌘)</kbd> + <kbd>C</kbd> to popup Maccy or click on its icon in the menu bar.
-2. Type what you want to find.
-3. To select the history item you wish to copy, press <kbd>ENTER</kbd>, or click the item, or use <kbd>COMMAND (⌘)</kbd> + `n` shortcut.
-4. To choose the history item and paste, press <kbd>OPTION (⌥)</kbd> + <kbd>ENTER</kbd>, or <kbd>OPTION (⌥)</kbd> + <kbd>CLICK</kbd> the item, or use <kbd>OPTION (⌥)</kbd> + `n` shortcut.
-5. To choose the history item and paste without formatting, press <kbd>OPTION (⌥)</kbd> + <kbd>SHIFT (⇧)</kbd> + <kbd>ENTER</kbd>, or <kbd>OPTION (⌥)</kbd> + <kbd>SHIFT (⇧)</kbd> + <kbd>CLICK</kbd> the item, or use <kbd>OPTION (⌥)</kbd> + <kbd>SHIFT (⇧)</kbd> + `n` shortcut.
-6. To delete the history item, press <kbd>OPTION (⌥)</kbd> + <kbd>DELETE (⌫)</kbd>.
-7. To see the full text of the history item, wait a couple of seconds for tooltip.
-8. To pin the history item so that it remains on top of the list, press <kbd>OPTION (⌥)</kbd> + <kbd>P</kbd>. The item will be moved to the top with a random but permanent keyboard shortcut. To unpin it, press <kbd>OPTION (⌥)</kbd> + <kbd>P</kbd> again.
-9. To clear all unpinned items, select _Clear_ in the menu, or press <kbd>OPTION (⌥)</kbd> + <kbd>COMMAND (⌘)</kbd> + <kbd>DELETE (⌫)</kbd>. To clear all items including pinned, select _Clear_ in the menu with  <kbd>OPTION (⌥)</kbd> pressed, or press <kbd>SHIFT (⇧)</kbd> + <kbd>OPTION (⌥)</kbd> + <kbd>COMMAND (⌘)</kbd> + <kbd>DELETE (⌫)</kbd>.
-10. To disable Maccy and ignore new copies, click on the menu icon with <kbd>OPTION (⌥)</kbd> pressed.
-11. To ignore only the next copy, click on the menu icon with <kbd>OPTION (⌥)</kbd> + <kbd>SHIFT (⇧)</kbd> pressed.
-12. To customize the behavior, check "Preferences…" window, or press <kbd>COMMAND (⌘)</kbd> + <kbd>,</kbd>.
+1. <kbd>SHIFT (⇧)</kbd> + <kbd>COMMAND (⌘)</kbd> + <kbd>C</kbd> — открыть Maccy; можно также нажать на его значок в строке меню.
+2. Начните печатать то, что хотите найти.
+3. Чтобы выбрать запись истории и скопировать её, нажмите <kbd>ENTER</kbd>, либо кликните по записи, либо используйте сочетание <kbd>COMMAND (⌘)</kbd> + `n`.
+4. Чтобы выбрать запись и сразу вставить её, нажмите <kbd>OPTION (⌥)</kbd> + <kbd>ENTER</kbd>, либо <kbd>OPTION (⌥)</kbd> + <kbd>CLICK</kbd> по записи, либо используйте сочетание <kbd>OPTION (⌥)</kbd> + `n`.
+5. Чтобы выбрать запись и вставить её без форматирования, нажмите <kbd>OPTION (⌥)</kbd> + <kbd>SHIFT (⇧)</kbd> + <kbd>ENTER</kbd>, либо <kbd>OPTION (⌥)</kbd> + <kbd>SHIFT (⇧)</kbd> + <kbd>CLICK</kbd> по записи, либо используйте сочетание <kbd>OPTION (⌥)</kbd> + <kbd>SHIFT (⇧)</kbd> + `n`.
+6. Чтобы удалить запись, нажмите <kbd>OPTION (⌥)</kbd> + <kbd>DELETE (⌫)</kbd>.
+7. Чтобы увидеть запись целиком, подождите пару секунд — появится подсказка.
+8. Чтобы прикрепить запись и оставить её вверху списка, нажмите <kbd>OPTION (⌥)</kbd> + <kbd>P</kbd>. Запись переместится наверх и получит случайное, но постоянное сочетание клавиш. Чтобы открепить её, снова нажмите <kbd>OPTION (⌥)</kbd> + <kbd>P</kbd>.
+9. Чтобы очистить все неприкреплённые записи, выберите в меню _Очистить_ или нажмите <kbd>OPTION (⌥)</kbd> + <kbd>COMMAND (⌘)</kbd> + <kbd>DELETE (⌫)</kbd>. Чтобы очистить вообще все записи, включая прикреплённые, выберите в меню _Очистить_ с нажатой <kbd>OPTION (⌥)</kbd> или нажмите <kbd>SHIFT (⇧)</kbd> + <kbd>OPTION (⌥)</kbd> + <kbd>COMMAND (⌘)</kbd> + <kbd>DELETE (⌫)</kbd>.
+10. Чтобы отключить Maccy и игнорировать новые копирования, кликните по значку в строке меню с нажатой <kbd>OPTION (⌥)</kbd>.
+11. Чтобы игнорировать только следующее копирование, кликните по значку в строке меню с нажатыми <kbd>OPTION (⌥)</kbd> + <kbd>SHIFT (⇧)</kbd>.
+12. Чтобы настроить поведение приложения, откройте окно «Настройки…» или нажмите <kbd>COMMAND (⌘)</kbd> + <kbd>,</kbd>.
 
-## Advanced
+## Дополнительно
 
-### Ignore Copied Items
+### Игнорирование скопированного
 
-You can tell Maccy to ignore all copied items:
+Можно попросить Maccy игнорировать все копирования:
 
 ```sh
-defaults write org.p0deje.Maccy ignoreEvents true # default is false
+defaults write org.p0deje.Maccy ignoreEvents true # по умолчанию false
 ```
 
-This is useful if you have some workflow for copying sensitive data. You can set `ignoreEvents` to true, copy the data and set `ignoreEvents` back to false.
+Это удобно, если у вас есть свой порядок копирования конфиденциальных данных: поставьте `ignoreEvents` в true, скопируйте данные и верните `ignoreEvents` в false.
 
-You can also click the menu icon with <kbd>OPTION (⌥)</kbd> pressed. To ignore only the next copy, click with <kbd>OPTION (⌥)</kbd> + <kbd>SHIFT (⇧)</kbd> pressed.
+Ещё можно кликнуть по значку в строке меню с нажатой <kbd>OPTION (⌥)</kbd>. Чтобы игнорировать только следующее копирование, кликайте с нажатыми <kbd>OPTION (⌥)</kbd> + <kbd>SHIFT (⇧)</kbd>.
 
-### Ignore Custom Copy Types
+### Игнорирование своих типов копирования
 
-By default Maccy will ignore certain copy types that are considered to be confidential
-or temporary. The default list always include the following types:
+По умолчанию Maccy игнорирует некоторые типы копирования, которые считаются конфиденциальными
+или временными. В список по умолчанию всегда входят следующие типы:
 
 * `org.nspasteboard.TransientType`
 * `org.nspasteboard.ConcealedType`
 * `org.nspasteboard.AutoGeneratedType`
 
-Also, default configuration includes the following types but they can be removed
-or overwritten:
+Кроме них, в конфигурацию по умолчанию входят такие типы, но их можно удалить
+или заменить:
 
 * `com.agilebits.onepassword`
 * `com.typeit4me.clipping`
@@ -97,74 +105,74 @@ or overwritten:
 * `Pasteboard generator type`
 * `net.antelle.keeweb`
 
-You can add additional custom types using settings.
-To find what custom types are used by an application, you can use
-free application [Pasteboard-Viewer](https://github.com/sindresorhus/Pasteboard-Viewer).
-Simply download the application, open it, copy something from the application you
-want to ignore and look for any custom types in the left sidebar. [Here is an example
-of using this approach to ignore Adobe InDesign](https://github.com/p0deje/Maccy/issues/125).
+Дополнительные типы можно добавить в настройках.
+Чтобы узнать, какие пользовательские типы использует приложение, воспользуйтесь
+бесплатной программой [Pasteboard-Viewer](https://github.com/sindresorhus/Pasteboard-Viewer).
+Скачайте её, откройте, скопируйте что-нибудь из приложения, которое хотите
+игнорировать, и посмотрите на нестандартные типы в левой боковой панели. [Вот пример того,
+как таким способом игнорировали Adobe InDesign](https://github.com/p0deje/Maccy/issues/125).
 
-### Speed up Clipboard Check Interval
+### Ускорение проверки буфера обмена
 
-By default, Maccy checks clipboard every 500 ms, which should be enough for most users. If you want
-to speed it up, you can change it with `defaults`:
+По умолчанию Maccy проверяет буфер обмена каждые 500 мс — большинству пользователей этого хватает. Если хотите
+ускорить проверку, измените интервал через `defaults`:
 
 ```sh
-defaults write org.p0deje.Maccy clipboardCheckInterval 0.1 # 100 ms
+defaults write org.p0deje.Maccy clipboardCheckInterval 0.1 # 100 мс
 ```
 
 ## FAQ
 
-### Why doesn't it paste when I select an item in history?
+### Почему при выборе записи из истории ничего не вставляется?
 
-1. Make sure you have "Paste automatically" enabled in Preferences.
-2. Make sure "Maccy" is added to System Settings -> Privacy & Security -> Accessibility.
+1. Убедитесь, что в настройках включён пункт «Автоматически вставлять».
+2. Убедитесь, что «Maccy» добавлен в Системные настройки -> Конфиденциальность и безопасность -> Универсальный доступ.
 
-### When assigning a hotkey to open Maccy, it says that this hotkey is already used in some system setting.
+### При назначении горячей клавиши для открытия Maccy пишет, что она уже занята в системных настройках.
 
-1. Open System settings -> Keyboard -> Keyboard Shortcuts.
-2. Find where that hotkey is used. For example, "Convert text to simplified Chinese" is under Services -> Text.
-3. Disable that hotkey or remove assigned combination ([screenshot](https://github.com/p0deje/Maccy/assets/576152/446719e6-c3e5-4eb0-95fb-5a811066487f)).
-4. Restart Maccy.
-5. Assign hotkey in Maccy settings.
+1. Откройте Системные настройки -> Клавиатура -> Сочетания клавиш.
+2. Найдите, где используется это сочетание. Например, «Преобразовать текст в упрощённый китайский» находится в разделе «Службы» -> «Текст».
+3. Отключите это сочетание или удалите назначенную комбинацию ([скриншот](https://github.com/p0deje/Maccy/assets/576152/446719e6-c3e5-4eb0-95fb-5a811066487f)).
+4. Перезапустите Maccy.
+5. Назначьте горячую клавишу в настройках Maccy.
 
-### How to restore hidden footer?
+### Как вернуть скрытый нижний колонтитул?
 
-1. Open Maccy window.
-2. Press <kbd>COMMAND (⌘)</kbd> + <kbd>,</kbd> to open preferences.
-3. Enable footer in Appearance section.
+1. Откройте окно Maccy.
+2. Нажмите <kbd>COMMAND (⌘)</kbd> + <kbd>,</kbd>, чтобы открыть настройки.
+3. Включите нижний колонтитул на вкладке «Внешний Вид».
 
-If for some reason it doesn't work, run the following command in Terminal.app:
+Если по какой-то причине это не помогает, выполните в Terminal.app такую команду:
 
 ```sh
 defaults write org.p0deje.Maccy showFooter 1
 ```
 
-### How to ignore copies from [Universal Clipboard](https://support.apple.com/en-us/102430)?
+### Как игнорировать копирования из [универсального буфера обмена](https://support.apple.com/ru-ru/102430)?
 
-1. Open Preferences -> Ignore -> Pasteboard Types.
-2. Add `com.apple.is-remote-clipboard`.
+1. Откройте Настройки -> Игнорирование -> Типы.
+2. Добавьте `com.apple.is-remote-clipboard`.
 
-### My keyboard shortcut stopped working in password fields. How do I fix this?
+### Моя горячая клавиша перестала работать в полях ввода пароля. Как это исправить?
 
-If your shortcut produces a character (like `Option+C` → "ç"), macOS security may block it in password fields. Use [Karabiner-Elements](https://karabiner-elements.pqrs.org/) to remap your shortcut to a different combination like `Cmd+Shift+C`. [See detailed solution](docs/keyboard-shortcut-password-fields.md).
+Если сочетание вводит символ (например, `Option+C` → «ç»), защита macOS может блокировать его в полях ввода пароля. Используйте [Karabiner-Elements](https://karabiner-elements.pqrs.org/), чтобы переназначить сочетание на другое, например `Cmd+Shift+C`. [Подробное решение](docs/keyboard-shortcut-password-fields.md).
 
-## Translations
+## Переводы
 
-The translations are hosted in [Weblate](https://hosted.weblate.org/engage/maccy/).
-You can use it to suggest changes in translations and localize the application to a new language.
+Переводы оригинального проекта размещены на [Weblate](https://hosted.weblate.org/engage/maccy/).
+С его помощью можно предлагать правки в переводах и локализовать приложение на новый язык.
 
 [![Translation status](https://hosted.weblate.org/widget/maccy/multi-auto.svg)](https://hosted.weblate.org/engage/maccy/)
 
-## Motivation
+## Мотивация
 
-There are dozens of similar applications out there, so why build another?
-Over the past years since I moved from Linux to macOS, I struggled to find
-a clipboard manager that is as free and simple as [Parcellite](http://parcellite.sourceforge.net),
-but I couldn't. So I've decided to build one.
+Подобных приложений десятки, так зачем делать ещё одно?
+За годы с тех пор, как я перешёл с Linux на macOS, я всё не мог найти
+менеджер буфера обмена, такой же свободный и простой, как [Parcellite](http://parcellite.sourceforge.net).
+Так что я решил написать свой.
 
-Also, I wanted to learn Swift and get acquainted with macOS application development.
+Кроме того, мне хотелось выучить Swift и познакомиться с разработкой под macOS.
 
-## License
+## Лицензия
 
 [MIT](./LICENSE)

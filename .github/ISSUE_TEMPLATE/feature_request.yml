@@ -1,29 +1,29 @@
 ---
-name: 💪 Feature request
-description: Suggest an idea for this project
+name: 💪 Запрос новой функции
+description: Предложить идею для проекта
 labels: [enhancement]
 body:
   - type: checkboxes
     attributes:
-      label: Before Submitting Your Feature Request
+      label: Перед отправкой запроса новой функции
       options:
-        - label: Check that there isn't already a similar feature request to avoid creating a duplicate.
+        - label: Я проверил(а), что похожего запроса ещё нет, чтобы не создавать дубликат.
           required: false
-        - label: I have seen the [FAQ](https://github.com/p0deje/Maccy?tab=readme-ov-file#faq).
+        - label: Я прочитал(а) [FAQ](https://github.com/p0deje/Maccy?tab=readme-ov-file#faq).
           required: false
   - type: textarea
     attributes:
-      label: Problem
+      label: Проблема
       description:
-        Please add a clear and concise description of the problem you are
-        seeking to solve with this feature request.
+        Опишите чётко и коротко проблему, которую вы хотите
+        решить с помощью этой функции.
       placeholder: |
-        Description
+        Описание
   - type: textarea
     attributes:
-      label: Solution
-      description: Please describe what you might want to happen to address this issue. If applicable, add a screenshot, gif, or video to better convey your idea.
+      label: Решение
+      description: Опишите, как, по-вашему, можно решить эту проблему. Если нужно, добавьте скриншот, gif или видео, чтобы лучше показать идею.
       placeholder: |
-        Short description
+        Краткое описание
     validations:
       required: false
