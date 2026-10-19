@@ -13,7 +13,12 @@ struct MaccyApp: App {
     // Русская сборка: интерфейс всегда на русском независимо от языка системы.
     // Значение в домене приложения перекрывает глобальное AppleLanguages,
     // в том числе для ресурсов сторонних пакетов (Settings, KeyboardShortcuts).
-    UserDefaults.standard.set(["ru"], forKey: "AppleLanguages")
+    // Язык, переданный аргументом запуска (`-AppleLanguages (en)`, так делают UI-тесты),
+    // не перезаписываем: домен аргументов и так приоритетнее, а сохранённое значение не трогаем.
+    let arguments = UserDefaults.standard.volatileDomain(forName: UserDefaults.argumentDomain)
+    if arguments["AppleLanguages"] == nil {
+      UserDefaults.standard.set(["ru"], forKey: "AppleLanguages")
+    }
   }
 
   var body: some Scene {

@@ -66,6 +66,8 @@ class MaccyUITests: XCTestCase {
     try? "Hello world".write(to: file2, atomically: true, encoding: .utf8)
 
     app.launchArguments.append("enable-testing")
+    // Русская сборка по умолчанию русская; тесты ищут элементы по английским подписям.
+    app.launchArguments.append(contentsOf: ["-AppleLanguages", "(en)"])
     setKeyboardShortcut("popup", keyCode: kVK_ANSI_C, modifiers: cmdKey | shiftKey)
     setKeyboardShortcut("pin", keyCode: kVK_ANSI_P, modifiers: optionKey)
     setKeyboardShortcut("delete", keyCode: kVK_Delete, modifiers: optionKey)

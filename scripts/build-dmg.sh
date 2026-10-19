@@ -15,6 +15,8 @@ cd "$ROOT"
 # Hardened runtime выключен: с ad-hoc подписью он включает проверку библиотек,
 # и dyld отказывается грузить встроенный Sparkle.framework («different Team IDs»).
 # Песочница (entitlements) сохраняется.
+# CODE_SIGN_INJECT_BASE_ENTITLEMENTS=NO: не добавлять отладочный
+# com.apple.security.get-task-allow, иначе любой процесс сможет подключиться к Maccy отладчиком.
 echo "==> Сборка Release (ad-hoc подпись)"
 xcodebuild \
   -project "$APP_NAME.xcodeproj" \
@@ -27,6 +29,7 @@ xcodebuild \
   DEVELOPMENT_TEAM= \
   PROVISIONING_PROFILE_SPECIFIER= \
   ENABLE_HARDENED_RUNTIME=NO \
+  CODE_SIGN_INJECT_BASE_ENTITLEMENTS=NO \
   build | tail -20
 
 BUILT_APP="$DERIVED_DATA/Build/Products/Release/$APP_NAME.app"
@@ -40,6 +43,10 @@ ditto "$BUILT_APP" "$APP"
 
 echo "==> Проверка подписи"
 codesign --verify --deep --strict "$APP"
+if codesign -d --entitlements - "$APP" 2>/dev/null | grep -q 'com.apple.security.get-task-allow'; then
+  echo "Ошибка: в $APP остался entitlement com.apple.security.get-task-allow" >&2
+  exit 1
+fi
 
 VERSION="$(/usr/libexec/PlistBuddy -c 'Print :CFBundleShortVersionString' "$APP/Contents/Info.plist")"
 DMG="$BUILD_DIR/$APP_NAME-ru-$VERSION.dmg"
