@@ -1,13 +1,32 @@
 <!-- autopilot:start -->
 # Maccy (русский форк)
 
-Форк менеджера буфера обмена Maccy для macOS, переведённый на русский и собираемый в DMG.
-
 ## Команды
 
-| Команда | Что делает |
-|---------|------------|
-| `xcodebuild -project Maccy.xcodeproj -scheme Maccy -configuration Release build` | Собрать приложение |
+- `./scripts/build-dmg.sh` — `build/Maccy.app` (ad-hoc) и `build/Maccy-ru-2.7.1.dmg`, ~45 с
+- `xcodebuild -project Maccy.xcodeproj -scheme Maccy -configuration Release CODE_SIGN_IDENTITY=- DEVELOPMENT_TEAM= build` — проверка сборки
+- `xcodebuild -project Maccy.xcodeproj -scheme Maccy -configuration Debug CODE_SIGN_IDENTITY=- DEVELOPMENT_TEAM= build-for-testing` — собрать тесты (прогон не проверялся)
+
+## Где что
+
+- `Maccy/MaccyApp.swift` — точка входа, принудительный язык `ru` в `init()`
+- `Maccy/AppDelegate.swift` — запуск, панель, статус-айтем
+- `Maccy/Observables/` — состояние (`AppState`, `History`); `Maccy/Storage.swift` — SwiftData в `~/Library/Application Support/Maccy/Storage.sqlite` (внутри контейнера песочницы)
+- `Maccy/Intents/` — Быстрые команды; `Maccy/Views/`, `Maccy/Settings/` — SwiftUI-экраны
+- `Maccy/<язык>.lproj/Localizable.strings` — строки; свои есть также в `Views/` и `Settings/`
+- `MaccyTests/`, `MaccyUITests/` — тесты; `Maccy.xctestplan` — план
+- `INSTALL.ru.md` — установка для пользователя; `scripts/build-dmg.sh` — вся сборка DMG
+
+## Подводные камни
+
+- Язык `ru` пишется в `AppleLanguages` в `MaccyApp.init`, кроме запуска с аргументом `-AppleLanguages` (так делают UI-тесты, `MaccyUITests/MaccyUITests.swift`)
+- В `Maccy/en.lproj/Localizable.strings` ключи Intents намеренно с русскими значениями: Быстрые команды берут язык системы
+- Новая строка — пара `en.lproj` + `ru.lproj` в одном месте; остальные языки не трогать
+- В `build-dmg.sh` выключены hardened runtime (иначе dyld не грузит `Sparkle.framework` при ad-hoc) и `get-task-allow`; не возвращать
+- Sparkle слинкован, но обновления отключены (`SUEnableAutomaticChecks=false` в `Maccy/Info.plist`); `SoftwareUpdater` удалён, `SPUUpdater` остался только в `#if DEBUG` для тестов
+- Bundle id `org.p0deje.Maccy` общий с оригиналом: тот же контейнер `~/Library/Containers/org.p0deje.Maccy`, история и настройки смешиваются
+- Developer ID нет: только ad-hoc, при установке Gatekeeper ругается (см. `INSTALL.ru.md`)
+- Не трогать: `appcast.xml`, `LICENSE`, `.autopilot/`, `AGENTS.md`/`CLAUDE.md` вне меток; `build/` в `.gitignore`
 
 ## Как здесь работает Autopilot
 
